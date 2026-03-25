@@ -34,11 +34,11 @@ Run the following in the project terminal to check everything is installed:
 ```
 flutter doctor
 ```
-> `[✗] Android toolchain` can be ignored — Android is not supported.
+> `[✗] Android toolchain` can be ignored since Android is not supported.
 
 #### Run the App
 1. In VS Code, change the device in the bottom right corner to your iOS simulator (Start iOS Simulator)
-2. Navigate to the project folder:
+2. Navigate to the project folder if you are not there already:
 ```
    cd flutter_project
 ```
