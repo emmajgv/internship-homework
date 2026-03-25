@@ -1,7 +1,14 @@
 # Flutter-related
 **/Flutter/ephemeral/
 **/Pods/
+build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
 
 # Xcode-related
 **/dgph
 **/xcuserdata/
+
+# macOS system related
+**/.DS_Store
