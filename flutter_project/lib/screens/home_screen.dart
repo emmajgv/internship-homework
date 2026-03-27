@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/services/finnhub_service.dart';
+import 'package:flutter_application_1/entity/stock.dart';
 
-//  Homescreen class that extends StatefulWidget
+// Homescreen class that extends StatefulWidget
 // so that the screen can change when data comes back.
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,7 +15,7 @@ class HomeScreen extends StatefulWidget {
 // this class is only meant to support Homescreen internally.
 // state class contains: data(state), logic(functions that change data) and UI (build method)
 class _HomeScreenState extends State<HomeScreen> {
-  Map<String, dynamic>? stockData;
+  Stock? stock;
   bool isLoading = false;
   String? errorMessage;
 
@@ -23,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       isLoading = true;
       errorMessage = null;
-      stockData = null;
+      stock = null;
     });
     final data = await fetchQuote(symbol);
 
@@ -33,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
       if (data == null) {
         errorMessage = 'Could not find stock "$symbol". Please try again';
       } else {
-        stockData = data;
+        stock = data;
       }
     });
   }
@@ -41,7 +42,6 @@ class _HomeScreenState extends State<HomeScreen> {
 // returns the screen layout
   @override
   Widget build(BuildContext context) {
-    // basic app layout
     return Scaffold(
   appBar: AppBar(title: const Text('Stock Watch')),
   body: Padding(
@@ -63,11 +63,11 @@ class _HomeScreenState extends State<HomeScreen> {
           style: TextStyle(color: Colors.red),
           ),
 
-        if (stockData != null)
+        if (stock case Stock(price: final price?, symbol: final symbol?))
           Text(
-            'Current price: ${stockData!['c']}',
+            '$symbol\nprice: $price',
             style: const TextStyle(fontSize: 24),
-          ),
+        ),
       ],
     ),
   ),

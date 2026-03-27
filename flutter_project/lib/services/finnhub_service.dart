@@ -1,7 +1,8 @@
+import 'package:flutter_application_1/entity/stock.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-const String apiKey = 'INSERT_FINNHUB_KEY';
+const String apiKey = 'API_KEY_PLACEHOLDER';
 
 // A Finnhub quote usually looks like this
 // {
@@ -13,7 +14,8 @@ const String apiKey = 'INSERT_FINNHUB_KEY';
 // "t": 1582641000 // Timestamp
 // }
 
-Future<Map<String, dynamic>?> fetchQuote(String symbol) async {
+Future<Stock?> fetchQuote(String symbol) async {
+  symbol = symbol.toUpperCase();
 try {
     final url = Uri.parse(
       'https://finnhub.io/api/v1/quote?symbol=$symbol&token=$apiKey'
@@ -25,7 +27,11 @@ try {
     // Finnhub returns c: 0 when the symbol doesn't exist
     if (data['c'] == 0) return null;
 
-    return data;
+    double price = data['c'];
+    double highestToday = data['h'];
+    double lowestToday = data["l"];
+    
+    return Stock(symbol: symbol, price: price, highestToday: highestToday, lowestToday: lowestToday);
   } catch (e) {
     return null;
   }

@@ -43,3 +43,26 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+.flutter-plugins
+.packages
+devtools_options.yaml
+
+# Xcode/CocoaPods
+ios/Podfile.lock
+macos/Podfile.lock
+ios/Podfile
+macos/Podfile
+
+# Mac
+.DS_Store
+**/.DS_Store
+
+ios/Flutter/Debug.xcconfig
+ios/Flutter/Release.xcconfig
+ios/Runner.xcworkspace/
+macos/Flutter/Flutter-Debug.xcconfig
+macos/Flutter/Flutter-Release.xcconfig
+macos/Flutter/GeneratedPluginRegistrant.swift
+macos/Runner.xcworkspace/linux/
+windows/
