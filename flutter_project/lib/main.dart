@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Stock Watch',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.pinkAccent),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 255, 255, 255)),
         scaffoldBackgroundColor: Color(0xFF1e1e1e),
         textTheme: const TextTheme(
           bodyLarge: TextStyle(color: Colors.white,),
