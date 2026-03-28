@@ -10,5 +10,13 @@ class Stock {
     required this.highestToday,
     required this.lowestToday,
   });
-}
 
+
+  @override
+  bool operator ==(Object other) {
+    return other is Stock && other.symbol == symbol;
+  }
+
+  @override
+  int get hashCode => symbol.hashCode;
+}
