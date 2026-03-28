@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/services/finnhub_service.dart';
 import 'package:flutter_application_1/entity/stock.dart';
 
+Set<Stock> watchlist = {};
+
 // Homescreen class that extends StatefulWidget
 // so that the screen can change when data comes back.
 class HomeScreen extends StatefulWidget {
@@ -39,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-// returns the screen layout
+  // returns the screen layout
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,15 +60,82 @@ class _HomeScreenState extends State<HomeScreen> {
         if (isLoading)
           const CircularProgressIndicator(),
 
+
         if (errorMessage != null)
           Text(errorMessage!,
           style: TextStyle(color: Colors.red),
           ),
 
         if (stock case Stock(price: final price?, symbol: final symbol?))
+
+
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
           Text(
-            '$symbol\nprice: $price',
-            style: const TextStyle(fontSize: 24),
+            '$symbol \$$price',
+            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          ),
+          if (stock != null)
+            IconButton(
+              icon: Icon(
+                watchlist.contains(stock) ? Icons.star : Icons.star_border,
+              ),
+              onPressed: () {
+                setState(() {
+                  if (watchlist.contains(stock)) {
+                    watchlist.remove(stock);
+                  } else {
+                    watchlist.add(stock!);
+                  }
+                });
+              },
+            ),
+        ],
+      ),
+      
+        const SizedBox(height: 40),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            'Your watchlist',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+
+
+        const SizedBox(height: 20),
+        Expanded(
+          child: watchlist.isEmpty ? Center(child: Text('No stocks in watchlist yet'),
+          )
+          : ListView.builder(
+            itemCount: watchlist.length,
+            itemBuilder: (context, index) {
+              final stock = watchlist.elementAt(index);
+
+              return ListTile(
+                title: Text('${stock.symbol} \$${stock.price}', 
+                style: TextStyle(fontWeight: FontWeight.bold),),
+                  subtitle: Row(
+                  children: [
+                    Icon(Icons.arrow_downward, color: Colors.red, size: 14),
+                    Text('\$${stock.lowestToday}'),
+                    SizedBox(width: 8),
+                    Icon(Icons.arrow_upward, color: Colors.green, size: 14),
+                    Text('\$${stock.highestToday}'),
+                  ],
+                ),
+                trailing: IconButton(
+                  icon: const Icon(Icons.star, color: Colors.amber),
+                  onPressed: () {
+                    setState(() => watchlist.remove(stock));
+                  },
+                ),
+              );
+            },
+          ),
+
         ),
       ],
     ),
