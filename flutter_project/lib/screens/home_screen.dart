@@ -45,7 +45,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-  appBar: AppBar(title: const Text('Stock Watch')),
+  appBar: AppBar(title: const Text(
+    'Stock Watch',
+    style: TextStyle(color: Colors.white),
+  ),
+  backgroundColor: Color(0xFF1E1E1E),),
   body: Padding(
     padding: const EdgeInsets.all(16),
     child: Column(
@@ -74,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Text(
             '$symbol \$$price',
-            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            style: const TextStyle(color:Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
           ),
           if (stock != null)
             IconButton(
@@ -93,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
         ],
       ),
-      
+
         const SizedBox(height: 40),
         Align(
           alignment: Alignment.centerLeft,
@@ -112,34 +116,37 @@ class _HomeScreenState extends State<HomeScreen> {
           : ListView.builder(
             itemCount: watchlist.length,
             itemBuilder: (context, index) {
-              final stock = watchlist.elementAt(index);
-
-              return ListTile(
-                title: Text('${stock.symbol} \$${stock.price}', 
-                style: TextStyle(fontWeight: FontWeight.bold),),
-                  subtitle: Row(
-                  children: [
-                    Icon(Icons.arrow_downward, color: Colors.red, size: 14),
-                    Text('\$${stock.lowestToday}'),
-                    SizedBox(width: 8),
-                    Icon(Icons.arrow_upward, color: Colors.green, size: 14),
-                    Text('\$${stock.highestToday}'),
-                  ],
-                ),
-                trailing: IconButton(
-                  icon: const Icon(Icons.star, color: Colors.amber),
-                  onPressed: () {
-                    setState(() => watchlist.remove(stock));
-                  },
-                ),
+  final stock = watchlist.elementAt(index);
+  return Column(
+    children: [
+      ListTile(
+        title: Text('${stock.symbol} \$${stock.price}',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+        subtitle: Row(
+          children: [
+            Icon(Icons.arrow_downward, color: Colors.red, size: 14),
+            Text('\$${stock.lowestToday}', style: TextStyle(color: Colors.white)),
+            SizedBox(width: 8),
+            Icon(Icons.arrow_upward, color: Colors.green, size: 14),
+            Text('\$${stock.highestToday}', style: TextStyle(color: Colors.white)),
+          ],
+        ),
+        trailing: IconButton(
+          icon: const Icon(Icons.star, color: Colors.amber),
+          onPressed: () {
+            setState(() => watchlist.remove(stock));
+          },
+        ),
+      ),
+///divider??
+                ],
               );
             },
           ),
-
         ),
       ],
     ),
   ),
 );
   }
-}
+}  
