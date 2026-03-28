@@ -15,8 +15,17 @@ class MyApp extends StatelessWidget {
       title: 'Stock Watch',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.pinkAccent),
+        scaffoldBackgroundColor: Color(0xFF1e1e1e),
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(color: Colors.white),
+          bodyMedium: TextStyle(color: Colors.white),
+          bodySmall: TextStyle(color: Colors.white),
+          titleLarge: TextStyle(color: Colors.white),
+          titleMedium: TextStyle(color: Colors.white),
+          titleSmall: TextStyle(color: Colors.white),
+        ),
       ),
-      home: const HomeScreen(),
+        home: const HomeScreen(),
     );
   }
 }
