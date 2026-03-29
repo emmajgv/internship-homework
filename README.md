@@ -44,6 +44,7 @@ where "c" is the key for current price, "h" for highest price today and "l" lowe
 ```
   brew install cocoapods
 ```
+- In VSCode, make sure Flutter by Dart Code plugin is installed.
 
 #### Verify Setup
 Run the following in the project terminal in VSCode to check everything is installed:
@@ -63,5 +64,10 @@ flutter doctor
 ```
    flutter run
 ```
+> If any framework files are missing:
+>```
+>  flutter create .
+>```
+
 5. Search up a stock symbol (e.g. 'AAPL', 'GOOGL', 'MSFT'). The search is case-insensitive.
 If you wish to save the stock in your watchlist, press the star icon. This action can be undone in both the search and in the watchlist itself.
