@@ -68,6 +68,7 @@ flutter doctor
 >```
 >  flutter create .
 >```
+>and flutter run again
 
 5. Search up a stock symbol (e.g. 'AAPL', 'GOOGL', 'MSFT'). The search is case-insensitive.
 If you wish to save the stock in your watchlist, press the star icon. This action can be undone in both the search and in the watchlist itself.
