@@ -10,7 +10,10 @@ Homework assignment for Mobile Application Engineer internship at Bigbank
 - Finnhub API
 
 ### Description
-A simple mobile application that lets the user search for a stock symbol and see its current price and info. The Finnhub API is integrated through `finnhub_service.dart`.
+A simple mobile application that lets the user search for a stock symbol and see its current price and info as well as add the stock to their watch list that displays the lowest and highest pwice of the day.
+
+The Finnhub API is integrated through `finnhub_service.dart` that gets the stock quote.
+- `GET /quote?symbol=AAPL`
 
 > **Note:** The API key in `finnhub_service.dart` is currently a placeholder. You will need a valid Finnhub API key to run the app. You can get a free one at [finnhub.io](https://finnhub.io).
 
@@ -46,3 +49,5 @@ flutter doctor
 ```
    flutter run
 ```
+4. Search up a stock symbol (e.g. 'AAPL', 'GOOGL', 'MSFT'). The search is case-insensitive.
+If you wish to save the stock in your watchlist, press the star icon. This action can be undone in both the search and in the watchlist itself.
