@@ -5,16 +5,6 @@ import 'dart:convert';
 
 final String apiKey = dotenv.env['FINNHUB_API_KEY'] ?? '';
 
-// A Finnhub quote usually looks like this
-// {
-// "c": 261.74,  // Current price
-// "h": 263.31,  // High price of the day
-// "l": 260.64,  // Low price of the day
-// "o": 261.07,  // Open price of the day
-// "pc": 259.45, // Previous close price
-// "t": 1582641000 // Timestamp
-// }
-
 Future<Stock?> fetchQuote(String symbol) async {
   symbol = symbol.toUpperCase();
 try {
@@ -25,7 +15,6 @@ try {
     final response = await http.get(url).timeout(Duration(seconds: 10));
     final data = jsonDecode(response.body);
 
-    // Finnhub returns c: 0 when the symbol doesn't exist
     if (data['c'] == 0) return null;
 
     double price = data['c'];

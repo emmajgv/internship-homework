@@ -4,8 +4,6 @@ import 'package:stock_watch/entity/stock.dart';
 
 Set<Stock> watchlist = {};
 
-// Homescreen class that extends StatefulWidget
-// so that the screen can change when data comes back.
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -13,16 +11,12 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-// _ means private and that it's only usable inside this file
-// this class is only meant to support Homescreen internally.
-// state class contains: data(state), logic(functions that change data) and UI (build method)
 class _HomeScreenState extends State<HomeScreen> {
   Stock? stock;
   bool isLoading = false;
   String? errorMessage;
 
   Future<void> search(String symbol) async {
-    // something changed - rebuild the ui
     setState(() {
       isLoading = true;
       errorMessage = null;
@@ -30,7 +24,6 @@ class _HomeScreenState extends State<HomeScreen> {
     });
     final data = await fetchQuote(symbol);
 
-    // save result and stop loading
     setState(() {
       isLoading = false;
       if (data == null) {
@@ -41,7 +34,6 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  // returns the screen layout
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,11 +56,13 @@ class _HomeScreenState extends State<HomeScreen> {
               topRight: Radius.circular(16),
             ),
       ),
-      padding: const EdgeInsets.only(left: 12, right: 12, top: 8, bottom: 20),  // bottom bigger than top
+      padding: const EdgeInsets.only(left: 12, right: 12, top: 8, bottom: 20),
       child: TextField(
+
         decoration: InputDecoration(
           hintText: 'Enter stock symbol',
           hintStyle: TextStyle(color: Colors.white54),
+
           border: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
           enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
           focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
@@ -78,6 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
         if (isLoading)
           const CircularProgressIndicator(),
+
         if (errorMessage != null)
           Text(errorMessage!, style: TextStyle(color: Colors.red)),
 
@@ -98,17 +93,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   '$symbol \$$price',
                   style: const TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
                 ),
-                if (stock != null)
-                  IconButton(
-                    icon: Icon(watchlist.contains(stock) ? Icons.star : Icons.star_border),
-                      color: watchlist.contains(stock) ? Colors.white : Colors.white,
-
-                    onPressed: () {
-                      setState(() {
-                        if (watchlist.contains(stock)) {
-                          watchlist.remove(stock);
-                        } else {
-                          watchlist.add(stock!);
+                IconButton(
+                  icon: Icon(watchlist.contains(stock) ? Icons.star : Icons.star_border),
+                  color: Colors.white,
+                  onPressed: () {
+                    setState(() {
+                      if (watchlist.contains(stock)) {
+                        watchlist.remove(stock);
+                      } else {
+                        watchlist.add(stock!);
                         }
                       });
                     },
@@ -132,6 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemCount: watchlist.length,
                     itemBuilder: (context, index) {
                       final stock = watchlist.elementAt(index);
+
                       return Column(
                         children: [
                           ListTile(
@@ -153,6 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               },
                             ),
                           ),
+
                           Divider(color: Colors.white24),
                         ],
                       );
