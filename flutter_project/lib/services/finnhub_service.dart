@@ -1,8 +1,9 @@
-import 'package:flutter_application_1/entity/stock.dart';
+import 'package:stock_watch/entity/stock.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-const String apiKey = 'API_KEY_PLACEHOLDER';
+final String apiKey = dotenv.env['FINNHUB_API_KEY'] ?? '';
 
 // A Finnhub quote usually looks like this
 // {
