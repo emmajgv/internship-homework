@@ -29,7 +29,7 @@ The Finnhub API is integrated through `finnhub_service.dart` that gets the stock
 where "c" is the key for current price, "h" for highest price today and "l" lowest price today.
 
 > **Note:** The file containing the API key was sent to you via email. See the steps on how to run the app down below.
-> In case the API key does not work contact me or generate one yourself at [https://finnhub.io]
+> In case the API key does not work contact me or generate one yourself at https://finnhub.io
 
 ### How to Run
 
