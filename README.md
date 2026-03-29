@@ -40,14 +40,15 @@ flutter doctor
 > `[✗] Android toolchain` can be ignored since Android is not supported.
 
 #### Run the App
-1. In VS Code, change the device in the bottom right corner to your iOS simulator (Start iOS Simulator)
-2. Navigate to the project folder if you are not there already:
+1. Open the project in VSCode. Replace the '.env.example' file with the '.env' file sent to you to get access to the Finnhun API key.
+2. In VS Code, change the device in the bottom right corner to your iOS simulator (Start iOS Simulator)
+3. Navigate to the project folder if you are not there already:
 ```
    cd flutter_project
 ```
-3. Run the app:
+4. Run the app:
 ```
    flutter run
 ```
-4. Search up a stock symbol (e.g. 'AAPL', 'GOOGL', 'MSFT'). The search is case-insensitive.
+5. Search up a stock symbol (e.g. 'AAPL', 'GOOGL', 'MSFT'). The search is case-insensitive.
 If you wish to save the stock in your watchlist, press the star icon. This action can be undone in both the search and in the watchlist itself.
