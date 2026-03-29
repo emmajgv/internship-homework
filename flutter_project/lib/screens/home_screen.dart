@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/services/finnhub_service.dart';
-import 'package:flutter_application_1/entity/stock.dart';
+import 'package:stock_watch/services/finnhub_service.dart';
+import 'package:stock_watch/entity/stock.dart';
 
 Set<Stock> watchlist = {};
 
